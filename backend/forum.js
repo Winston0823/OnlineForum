@@ -7,19 +7,9 @@ var connection = mysql.createConnection({
   password: 'Iaminvisible211',
   database: 'forum_database'
 });
-
+//seriously, that's all you've done...it's fine, more than I've done...where? then///atom is an editor that opens up any type of file. Could we have some faster responses? Like if you're going to open a text file at least open it faster...
+//no, ive created all the tables and columns and relationships and stuff for our database, oh ok yes ur right ill open up the txt files
 connection.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  let sql = `CREATE TABLE users (first_name VARCHAR(100) NOT NULL,
-  last_name VARCHAR(100) NOT NULL,
-  student_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  gender ENUM('male', 'female'),
-  rating MEDIUMINT(200) NOT NULL,
-  grade TINYINT(8) NOT NULL,
-  is_admin ENUM('true', 'false') NOT NULL)`;
-  connection.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("The customers table is created!!");
-  });
 });
