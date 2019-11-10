@@ -1,5 +1,9 @@
 var mysql = require('mysql');
-var app  = require('express');
+var express  = require('express');
+const bodyParser = require('body-parser');
+const pino = require('express-pino-logger')();
+
+const app = express();
 
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -12,4 +16,19 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
+});
+
+app.get('/api/hello', (req, res) => {
+  res.send({ express: 'Hello From Express' });
+});
+
+app.post('/api/world', (req, res) => {
+  console.log(req.body);
+  res.send(
+    `I received your POST request. This is what you sent me: ${req.body.post}`,
+  );
+});
+
+app.listen(3001, function() {
+  console.log('Alans sexy server is up and running!');
 });
